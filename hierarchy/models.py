@@ -1,7 +1,7 @@
 from django.db import models
 
 
-class Workers(models.Model):
+class Worker(models.Model):
     class Position(models.TextChoices):
         OPERATOR = "OPER", "Operator"
         LEADING_SPECIALIST = "LEAD", "Leading Specialist"
@@ -18,6 +18,7 @@ class Workers(models.Model):
                                 )
     employment_date = models.DateField()
     salary = models.PositiveIntegerField()
+    boss = models.ForeignKey("Worker", on_delete=models.DO_NOTHING, null=True)
 
     def __str__(self):
         return f"{self.surname} {self.name} {self.position}"
