@@ -2,7 +2,6 @@ from django_seed import Seed
 from random import choice
 from hierarchy.models import Worker
 
-
 seeder = Seed.seeder()
 name_list = ["Григорий", "Лев", "Андрей", "Роман", "Арсений", "Степан", "Владислав", "Никита", "Глеб", "Марк", "Давид",
              "Ярослав", "Евгений", "Матвей", "Фёдор", "Николай", "Алексей", "Андрей", "Артемий", "Виктор", "Никита",
@@ -18,15 +17,18 @@ patronymic_list = ['Артёмович', 'Львович', 'Иванович', '
                    'Максимович', 'Григорьевич', 'Сергеевич', 'Даниилович', 'Петрович', 'Даниилович', 'Даниилович',
                    'Степанович', 'Дмитриевич', 'Матвеевич', 'Андреевич', 'Егорович', 'Алиевич', 'Артёмович',
                    'Тимофеевич']
+salary_list = [2000, 2200, 2500, 3000, 5000]
+position_list = [i[0] for i in Worker.position.field.choices][:-1]
 
 
 def run():
-    seeder.add_entity(Worker, 15, {
+    seeder.add_entity(Worker, 100, {
         "name": lambda x: choice(name_list),
         "surname": lambda x: choice(surname_list),
-        "patronymic": lambda x: choice(patronymic_list)
+        "patronymic": lambda x: choice(patronymic_list),
+        "position": lambda x: choice(position_list),
+        "salary": lambda x: choice(salary_list),
+        "boss": lambda x: None
     })
+
     seeder.execute()
-
-
-
