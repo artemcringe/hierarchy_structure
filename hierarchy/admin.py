@@ -4,7 +4,7 @@ from .models import Worker
 
 @admin.register(Worker)
 class WorkerAdmin(admin.ModelAdmin):
-    list_display = ["name", "surname", "patronymic", "position", "boss"]
+    list_display = ["surname", "name", "patronymic", "position", "boss"]
     list_editable = ["position"]
 
 
