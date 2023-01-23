@@ -42,7 +42,8 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "hierarchy",
     "django_seed",
-    "django_extensions"
+    "django_extensions",
+    "mptt"
 ]
 
 MIDDLEWARE = [
